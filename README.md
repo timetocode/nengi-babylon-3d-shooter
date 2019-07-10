@@ -10,6 +10,8 @@ Then visit http://localhost:8080
 
 You may want to open two browser windows.
 
+Walkthrough video: [https://www.youtube.com/watch?v=oK15K9hTeCA](https://www.youtube.com/watch?v=oK15K9hTeCA) (only covers the client-side prediction and lag comp features, for basic nengi usage see the manual)
+
 ## Features
 * streamlined api for creating entities on the client -- Use `create`, `delete` and `watch` (see: factories) to react on the client to entity changes if needed. Movement and rotation don't require any code, and just work as is.
 * movement is predicted on client, and includes simple collisions with two demo obstacles via `moveWithCollisions`

@@ -19,7 +19,7 @@ const keybinds = {
 	// arrow keys
 	38: 'forwards',
 	37: 'left',
-	40: 'down',
+	40: 'backwards',
 	39: 'right',
 
 	87: 'forwards', // w
