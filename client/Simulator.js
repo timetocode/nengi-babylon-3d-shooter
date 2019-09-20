@@ -2,7 +2,7 @@ import BABYLONRenderer from './graphics/BABYLONRenderer'
 import InputSystem from './InputSystem'
 import MoveCommand from '../common/command/MoveCommand'
 import FireCommand from '../common/command/FireCommand'
-import createFactories from './factories/createFactories'
+import createHooks from './hooks/createHooks'
 import reconcilePlayer from './reconcilePlayer'
 import applyCommand from '../common/applyCommand'
 import { fire } from '../common/weapon'
@@ -31,7 +31,7 @@ class Simulator {
 		this.myRawEntity = null
 		this.mySmoothEntity = null
 
-		client.factory = createFactories({
+		client.factory = createHooks({
 			/* dependency injection */
 			simulator: this,
 		})

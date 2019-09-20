@@ -1,4 +1,5 @@
 import * as BABYLON from 'babylonjs'
+import Atlas from '../../common/Atlas'
 //import 'babylonjs-materials'
 
 class BABYLONRenderer {
@@ -8,6 +9,12 @@ class BABYLONRenderer {
 		this.scene = new BABYLON.Scene(this.engine)
 		this.scene.collisionsEnabled = true
 		this.scene.detachControl() // we're doing our own camera!
+
+		Atlas.load(this.scene, () => {
+			console.log('assets not loaded')
+		}, () => {
+			console.log('assets loaded')
+		})
 
 		this.camera = new BABYLON.TargetCamera('camera', new BABYLON.Vector3(0, 0, -10), this.scene)
 		this.camera.fov = 1.0
