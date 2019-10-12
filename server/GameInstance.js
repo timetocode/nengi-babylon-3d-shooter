@@ -38,8 +38,7 @@ class GameInstance {
 			rawEntity.mesh.checkCollisions = true
 
 			// make the raw entity only visible to this client
-			const channel = new nengi.Channel(nengiConfig)
-			this.instance.addChannel(channel)
+			const channel = this.instance.createChannel()
 			channel.subscribe(client)
 			channel.addEntity(rawEntity)
 			//this.instance.addEntity(rawEntity)
@@ -77,7 +76,7 @@ class GameInstance {
 			// clean up per client state
 			this.instance.removeEntity(client.rawEntity)
 			this.instance.removeEntity(client.smoothEntity)
-			this.instance.removeChannel(client.channel)
+			client.channel.destroy()
 		})
 
 		this.instance.on('command::MoveCommand', ({ command, client, tick }) => {
