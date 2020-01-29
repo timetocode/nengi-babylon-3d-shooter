@@ -1,0 +1,5 @@
+/public/js
+/node_modules
+Dockerfile*
+docker-compose*
+/.vscode

@@ -1,7 +1,20 @@
 import GameInstance from './GameInstance';
 import nengiConfig from '../common/nengiConfig';
+import * as http from 'http';
+import serveHandler from 'serve-handler'
 
-const gameInstance = new GameInstance(/*args*/)
+const port = process.env.PORT || 8079
+const httpServer = http.createServer((request, response) => {
+    return serveHandler(request, response, {
+        public: "public"
+    })
+})
+  
+httpServer.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+});
+
+const gameInstance = new GameInstance({ httpServer })
 
 const hrtimeMs = function() {
     let time = process.hrtime()

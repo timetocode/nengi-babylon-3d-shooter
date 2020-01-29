@@ -16,14 +16,14 @@ import * as BABYLON from 'babylonjs'
 global.XMLHttpRequest = require('xhr2').XMLHttpRequest
 
 class GameInstance {
-	constructor() {
+	constructor(webConfig) {
 		const engine = new BABYLON.NullEngine()
 		engine.enableOfflineSupport = false
 		const scene = new BABYLON.Scene(engine)
 		scene.collisionsEnabled = true
 		//const camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, BABYLON.Vector3.Zero(), scene)
 
-		this.instance = new nengi.Instance(nengiConfig, { port: 8079 })
+		this.instance = new nengi.Instance(nengiConfig, webConfig)
 		niceInstanceExtension(this.instance)
 
 		// game-related state
