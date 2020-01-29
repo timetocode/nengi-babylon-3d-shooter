@@ -12,7 +12,14 @@ class GameClient {
 
 		this.client.on('connected', res => { console.log('onConnect response:', res) })
 		this.client.on('disconnected', () => { console.log('connection closed') })
-		this.client.connect('ws://localhost:8079')
+
+		const proto = location.protocol === 'https:' ? 'wss:' : 'ws:'
+		const url = location.hostname === 'localhost' && location.port === "8080"
+			? 'ws://localhost:8079'
+			: `${proto}//${location.host}`
+
+		console.log("Connecting to:", url)
+		this.client.connect(url)
 	}
 
 	update(delta, tick, now) {
