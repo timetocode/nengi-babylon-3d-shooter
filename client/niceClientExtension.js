@@ -11,6 +11,14 @@ export default (client) => {
 	client.readNetworkAndEmit = () => {
 		const network = client.readNetwork()
 
+		network.messages.forEach(message => {
+			client.emit(`message::${message.protocol.name}`, message)
+		})
+
+		network.localMessages.forEach(localMessage => {
+			client.emit(`message::${localMessage.protocol.name}`, localMessage)
+		})
+
 		network.entities.forEach(snapshot => {
 			snapshot.createEntities.forEach(entity => {
 				client.emit(`create::${entity.protocol.name}`, entity)
@@ -28,14 +36,6 @@ export default (client) => {
 
 		network.predictionErrors.forEach(predictionErrorFrame => {
 			client.emit(`predictionErrorFrame`, predictionErrorFrame)
-		})
-
-		network.messages.forEach(message => {
-			client.emit(`message::${message.protocol.name}`, message)
-		})
-
-		network.localMessages.forEach(localMessage => {
-			client.emit(`message::${localMessage.protocol.name}`, localMessage)
 		})
 	}
 
