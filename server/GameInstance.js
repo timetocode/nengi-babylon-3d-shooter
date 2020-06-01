@@ -74,6 +74,8 @@ class GameInstance {
 
 		this.instance.on('disconnect', client => {
 			// clean up per client state
+			client.rawEntity.mesh.dispose()
+			client.smoothEntity.mesh.dispose()
 			this.instance.removeEntity(client.rawEntity)
 			this.instance.removeEntity(client.smoothEntity)
 			client.channel.destroy()
