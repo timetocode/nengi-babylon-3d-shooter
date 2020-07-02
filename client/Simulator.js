@@ -57,7 +57,7 @@ class Simulator {
 		})
 
 		client.on('predictionErrorFrame', predictionErrorFrame => {
-			reconcilePlayer(predictionErrorFrame, this.client, this.myRawEntity, this.obstacles)
+			reconcilePlayer(predictionErrorFrame, this.client, this.myRawEntity)
 		})
 
 		this.input.onmousemove = (e) => {
