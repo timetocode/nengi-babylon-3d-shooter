@@ -64,8 +64,10 @@ class GameInstance {
 			client.view = {
 				x: rawEntity.x,
 				y: rawEntity.y,
-				halfWidth: 99999,
-				halfHeight: 99999
+				z: rawEntity.z,
+				halfWidth: 20,
+				halfHeight: 20,
+				halfDepth: 20
 			}
 
 			// accept the connection
@@ -142,6 +144,7 @@ class GameInstance {
 			// center client's network view on the entity they control
 			client.view.x = rawEntity.x
 			client.view.y = rawEntity.y
+			client.view.z = rawEntity.z
 
 			// smooth entity will follow raw entity's path at *up to* 110% movement speed
 			// confused? stop by the nengi discord server https://discord.gg/7kAa7NJ 

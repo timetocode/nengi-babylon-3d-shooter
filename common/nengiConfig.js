@@ -18,6 +18,8 @@ const config = {
     USE_HISTORIAN: true,
     HISTORIAN_TICKS: 40,
 
+    DIMENSIONALITY: 3,
+
     protocols: {
         entities: [
             ['PlayerCharacter', PlayerCharacter],
