@@ -87,7 +87,13 @@ class GameInstance {
 			// move this client's entity
 			const entity = client.rawEntity
 
-			applyCommand(entity, command, this.obstacles)
+			//applyCommand(entity, command, this.obstacles)
+			entity.x = command.x,
+			entity.y = command.y
+			entity.z = command.z
+			const camVector = new BABYLON.Vector3(command.camRayX, command.camRayY, command.camRayZ)
+			entity.mesh.lookAt(entity.mesh.position.add(camVector))
+
 			client.positions.push({
 				x: entity.x,
 				y: entity.y,

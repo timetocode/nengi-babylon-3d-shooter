@@ -7,16 +7,14 @@ class MoveCommand {
     }
 }
 
+// Example of CLIENT AUTHORITATIVE state, aka very hackable
 MoveCommand.protocol = {
-    forwards: nengi.Boolean,
-    left: nengi.Boolean,
-    backwards: nengi.Boolean,
-	right: nengi.Boolean,
-	jump: nengi.Boolean,
+	x: nengi.Float32,
+	y: nengi.Float32,
+	z: nengi.Float32,
 	camRayX: nengi.Float32,
 	camRayY: nengi.Float32,
 	camRayZ: nengi.Float32,
-    delta: nengi.Float32
 }
 
 export default MoveCommand

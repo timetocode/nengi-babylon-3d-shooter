@@ -87,18 +87,28 @@ class Simulator {
 
 			/* begin movement */
 			const { forwards, left, backwards, right, jump } = input
-			const moveCommand = new MoveCommand({
+			const movement = {
 				camRayX: camRay.x,
 				camRayY: camRay.y,
 				camRayZ: camRay.z,
 				forwards, backwards, left, right, jump,
 				delta
-			})
-			// send moveCommand to the server
-			this.client.addCommand(moveCommand)
+			}
 
-			// apply moveCommand  to our local entity
-			applyCommand(this.myRawEntity, moveCommand)
+			// apply command to our local entity
+			applyCommand(this.myRawEntity, movement)
+
+			// now send this position to the server
+			// *CLIENT AUTHORITATIVE EXAMPLE, HACKABLE!! *
+			const { x, y, z } = this.myRawEntity
+			const moveCommand = new MoveCommand({
+				x, y, z,
+				camRayX: camRay.x,
+				camRayY: camRay.y,
+				camRayZ: camRay.z,
+			})
+
+			this.client.addCommand(moveCommand)	
 
 			// save the result of applying the command as a prediction
 			const prediction = {
