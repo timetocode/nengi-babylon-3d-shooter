@@ -14,7 +14,7 @@
     "babylonjs": "^4.0.3",
     "babylonjs-loaders": "^4.0.3",
     "esm": "^3.2.25",
-    "nengi": "^1.14.1",
+    "nengi": "^1.18.0",
     "xhr2": "^0.2.0"
   },
   "devDependencies": {
