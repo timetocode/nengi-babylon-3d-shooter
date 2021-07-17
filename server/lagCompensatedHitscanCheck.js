@@ -6,7 +6,6 @@ export default (instance, ray, timeAgo) => {
 	const hits = []
 	const pastEntities = instance.historian.getLagCompensatedArea(timeAgo, area)
 
-	console.log({ pastEntities }, instance.historian.getCurrentState())
 	pastEntities.forEach(pastEntity => {
 		// look up the real entity 
 		// -- the objects returned by instance.historian are just shallow copies from the past
