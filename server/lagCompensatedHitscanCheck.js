@@ -1,10 +1,12 @@
 export default (instance, ray, timeAgo) => {
-	// note: there is no 3D lag compensation culler in nengi at the moment
-	// so we just create an area that includes the whole game
-	const area = { x: 0, y: 0, halfWidth: 999999, halfHeight: 999999 }
+	// this is querying the whole game area of the demo, but if the game had a lot of entities
+	// it would make sense to query just the rectangle containing the ray + a little bit of padding
+	const area = { x: 0, y: 0, z: 0, halfWidth: 999999, halfHeight: 999999, halfDepth: 999999 }
 
 	const hits = []
 	const pastEntities = instance.historian.getLagCompensatedArea(timeAgo, area)
+
+	console.log({ pastEntities }, instance.historian.getCurrentState())
 	pastEntities.forEach(pastEntity => {
 		// look up the real entity 
 		// -- the objects returned by instance.historian are just shallow copies from the past
